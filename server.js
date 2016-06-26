@@ -1,7 +1,7 @@
 var restify = require('restify');
 var socketio = require('socket.io');
 
-var globalSocket; // chi co 1 socket available
+var globalSocket ; // chi co 1 socket available
 
 var server = restify.createServer();
 var io = socketio.listen(server.server);
@@ -23,13 +23,19 @@ server.listen(3001, function() {
   console.log('%s listening at %s', server.name, server.url);
 });
 
-server.get(/\/home/, restify.serveStatic({
+server.get('/voip-api/index', restify.serveStatic({
   directory: './public',
   file: 'index.html'
 }));
 
 io.sockets.on('connection', function (socket) {
-	globalSocket = socket;
+
+	// Lap array connections o day
+
+
+
+
+	globalSocket = socket; // ko nen
 
 	console.log('connected');
 
