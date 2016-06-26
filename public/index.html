@@ -1,22 +1,30 @@
+<head>
+  <link rel="stylesheet" href="/style.css">
+  <style type="text/css">
+
+  #calling_screen {
+
+    background: #CACACA
+  }
+
+  </style>
+</head>
+
 <script src="/socket.io/socket.io.js"></script>
-<script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
+ <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
 
 <script>
   var socket = io('http://localhost:3001');
   socket.on('connect', function(){
   	console.log('connected')
   });
-  socket.on('event', function(data){
-
-  	console.log('got event', data)
-  });
-  socket.on('news', function(data){
-
-  	console.log('got event', data)
-  });
-  socket.on('calling', function(data){
-  	$('#infomation').html(data.name);
-  	console.log('got event calling', data)
+  
+  
+  socket.on('incoming', function(data){
+    $('#calling_screen').html(''); //reset
+    for (k in data) {
+      $('#calling_screen').prepend( '<div>' + k + ": "+ data[k] + '</div>' ) ;
+    }
   });
 
   socket.on('disconnect', function(){
@@ -26,12 +34,8 @@
 
 
 <body>
-	
-	Dashboard calling form
+  <div id="calling_screen">	
 
-
-	<div id='infomation'>
-		
-	</div>
-
+      
+  </div>
 </body>

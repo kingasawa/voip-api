@@ -9,8 +9,8 @@ var io = socketio.listen(server.server);
 
 function handleVoIP(req, res, next) {
 	var params = req.params || {};
-	globalSocket.emit('calling', {"name": params.name, "id": params.id});
-  	res.send('hello ' + params.name);
+	globalSocket.emit('incoming', params );
+  	res.json( { "total": globalSocket.length} );
   	next();
 }
 
@@ -27,6 +27,11 @@ server.get('/voip-api/index', restify.serveStatic({
   directory: './public',
   file: 'index.html'
 }));
+
+server.get(/.*/, restify.serveStatic({
+    'directory': './public'
+ }));
+
 
 io.sockets.on('connection', function (socket) {
 
