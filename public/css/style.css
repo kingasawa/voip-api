@@ -1,0 +1,32 @@
+.demo-card-wide.mdl-card {
+    width: 100%;
+}
+.demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+    background: url('../img/calling_bg.jpg') center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+    color: #fff;
+}
+
+.mdl-dialog {
+    width: 600px!important;
+}
+
+.demo-layout-transparent {
+    background: url('../img/transparent.jpg') center / cover;
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+    /* This background is dark, so we set text to white. Use 87% black instead if
+       your background is light. */
+    color: white;
+}
+
+.mdl-progress {
+    width: 100%!important;
+}
+.mdl-layout-title {
+    font-weight: 300!important;
+}
